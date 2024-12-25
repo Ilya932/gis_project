@@ -1,0 +1,129 @@
+{% load static %}
+<!--<!DOCTYPE html>-->
+<html lang="ru">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Around the World</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+
+    <link rel="stylesheet" href="{% static '/css/main.css' %}" />
+    <script src="{% static '/js/main.js' %}"></script>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-black bg-black">
+        <div class="container">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="navbar-brand" onclick="scrollToBlock('pic_block')">Around the World</a></li>
+                    <li class="nav-item"><a class="nav-link" onclick="scrollToBlock('about_block')">About</a></li>
+                    <li class="nav-item"><a class="nav-link" onclick="scrollToBlock('tours_block')">Tours</a></li>
+                    <li class="nav-item"><a class="nav-link" onclick="scrollToBlock('contacts_block')">Contacts</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="bg-primary text-white text-center py-5">
+        <div id="pic_block" class="overlay"></div>
+        <div class="container2">
+            <h1>Путешествуйте и познавайте мир!</h1>
+            <p>Мы организуем для вас незабываемое путешествие</p>
+        </div>
+    </div>
+
+
+    <section id="about_block" class="py-5">
+        <div class="container">
+            <h2 class="about text-center mb-4">О нас</h2>
+            <p class="main_about_text">
+                Добро пожаловать в Around the world! Мы - команда энтузиастов, страстно влюбленных в путешествия и всё, что с ними связано.
+Наша миссия - сделать ваше путешествие незабываемым, заполненным впечатлениями и эмоциями. Мы понимаем, что каждый клиент уникален, как и его предпочтения в отношении отдыха.
+Поэтому мы стремимся создать персонализированные программы, которые соответствуют вашим ожиданиям и даже превосходят их. Наш опытный персонал заботится о каждой детали вашего путешествия - от выбора места назначения до организации развлечений и экскурсий. Мы предлагаем широкий выбор туров, от романтических уик-эндов до захватывающих приключений для целой семьи. На нашем сайте вы найдете обширную информацию о наших услугах, фотографии и отзывы от наших довольных клиентов. Мы также предоставляем возможность онлайн-бронирования, чтобы сделать процесс планирования вашего путешествия максимально удобным. Присоединяйтесь к нам и дайте нам возможность превратить ваши мечты о путешествии в реальность. Around the world - ваш надежный партнер в мире приключений!
+            </p>
+        </div>
+    </section>
+
+
+    <section id="tours_block" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="tours_text mb-4">Возможные туры</h2>
+            <div class="row">
+
+                {% if places %}
+                    {% for place in places %}
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="{{ place.image.url }}" class="card-img-top" alt="{{ country.name }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ place.name }}</h5>
+                                    <p class="card-text">{{ place.description }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>Мест нет(</p>
+                {% endif %}
+
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contacts_block" class="py-5 bg-light">
+        <div class="container text-center mt-5">
+            <img src="{% static '/images/logo.jpg' %}" class="img-fluid mb-3" />
+            <h2 class="contact_text">Наши контакты</h2>
+
+            <div class="row">
+                <div class="col">
+                    <div class="info">
+                        <p>Телефон: +8 800 555 35 35<br />Почта: traveling@gmail.com</p>
+                    </div>
+                    <div class="social-icons">
+                        <i class="fab fa-facebook"></i>
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </div>
+                <div class="col">
+                    <form class="form-group" action="/create/" method="POST">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <input
+                                type="email"
+                                class="form-control"
+                                name="email"
+                                placeholder="Ваш e-mail"
+                                required
+                            />
+                        </div>
+                        <div class="input-group">
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="name"
+                                placeholder="Ваше имя"
+                                required
+                            />
+                        </div>
+                        <button type="submit" class="btn">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
