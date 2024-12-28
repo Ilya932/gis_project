@@ -7,18 +7,26 @@ body {
 .nav-item {
  color: #FFFFFF;
  cursor: pointer;
+
+}
+
+
+
+.navbar-nav {
+    margin-left:1000px;
 }
 
 .navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: black;
-  z-index: 1000;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: black;
+    z-index: 1000;
 }
 
 .navbar-brand {
-    margin-right: 1000px;
+    cursor: pointer;
+    margin-left: 50px;
 }
 
 .navbar-nav .nav-link {
@@ -48,18 +56,22 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
 .py-5 {
     background-color: DEDADA;
-    height: 100vh;
+
+}
+
+.about_block {
+    background-color: DEDADA;
 }
 
 .container2 {
     position: relative;
-    top: 450px;
+    top: 50%;
 
 }
 
@@ -72,6 +84,13 @@ body {
 .main_about_text {
     text-align: center;
     font-size: 26px;
+}
+
+@media (max-width: 768px) {
+  .main_about_text {
+    font-size: 14px;
+    text-align: center;
+  }
 }
 
 .card img {
@@ -107,15 +126,19 @@ body {
 
 .info {
     margin: 20px;
-    font-size: 30px;
-    margin-left: 150px;
+    font-size: 200%;
 }
+
+
 
 .input-group {
     border: 1px solid rgb(207, 207, 207);
-    width: 500px;
+    width: 80%;
+    max-width: 500px;
     height: 60px;
-    margin: 20px;
+
+    margin: 20px auto;
+
 }
 
 .btn {
@@ -125,7 +148,7 @@ body {
     background-color: black;
     color: white;
     border-radius: 30px;
-    margin-right: 430px;
+
 }
 
 .btn:hover {
@@ -135,7 +158,5 @@ body {
 .social-icons i {
   font-size: 30px;
 }
-.social-icons {
-  margin-right: 150px;
-}
+
 

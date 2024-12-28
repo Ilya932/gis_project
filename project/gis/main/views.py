@@ -20,3 +20,7 @@ def create_client(request):
             return JsonResponse({"error": "Необходимо указать почту и имя."}, status=400)
 
     return JsonResponse({"error": "Метод не поддерживается."}, status=405)
+
+
+def test(request):
+    return render(request, 'index.html')
